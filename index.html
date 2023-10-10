@@ -7,16 +7,22 @@
   <title>Weather App</title>
 </head>
 <body>
+  <h1>Weather Forecaster</h1>
   <form action="">
     <input type="search" id="search-box" required>
     <button id="search-btn">Search</button>
   </form>
-  <div id="result-box">
-    <h2>Brooklyn, New York, USA</h2>
-    <p id="localtime-p">Local time:</p>
-    <p id="temp-p">Temp:</p>
-    <p id="condition-p">Condition:</p>
-    <img id="condition-img" src="">
+  <p id="result-message">Enter your city, state/region, or postal code above to display the current weather!</p>
+  <div id="result-box" class="hidden">
+    <h2></h2>
+    <div id="conditions-container">
+      <div>
+        <p id="localtime-p"></p>
+        <p id="temp-p"></p>
+        <p id="condition-p"></p>
+      </div>
+      <img id="condition-img" src="">
+    </div>
   </div>
   <script src="script.js"></script>
 </body>

@@ -1,0 +1,29 @@
+.hidden {
+  display: none;
+}
+
+h2 {
+  margin: 0;
+}
+
+img {
+  height: 128px;
+  width: 128px;
+}
+
+#result-box {
+  width: min(400px, 100%);
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+#conditions-container {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+}
+
+#localtime-p {
+  margin-top: 4px;
+}
