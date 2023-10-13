@@ -18,6 +18,10 @@ img {
   padding: 20px;
 }
 
+#result-box p {
+  margin: 8px 0px;
+}
+
 #conditions-container {
   display: flex;
   align-items: start;
@@ -26,4 +30,10 @@ img {
 
 #localtime-p {
   margin-top: 4px;
+}
+
+#temp-div {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
 }
