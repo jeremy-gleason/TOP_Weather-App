@@ -43,7 +43,7 @@ const formatDate = (dateString) => {
   let hour = parseInt(hourMinute[0]);
   if (hour > 12) {
     hour -= 12;
-  } else {
+  } else if (hour < 12) {
     isAM = true;
     if (hour === 0)
       hour = 12;
