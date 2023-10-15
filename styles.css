@@ -1,7 +1,3 @@
-.hidden {
-  display: none;
-}
-
 h2 {
   margin: 0;
 }
@@ -11,8 +7,17 @@ img {
   width: 128px;
 }
 
-#result-box {
+#result-box, #loading-div {
   width: min(400px, 100%);
+}
+
+#loading-div {
+  padding: 21px;
+  display: flex;
+  justify-content: center;
+}
+
+#result-box {
   border: 1px solid black;
   border-radius: 10px;
   padding: 20px;
@@ -36,4 +41,30 @@ img {
   display: flex;
   align-items: center;
   column-gap: 8px;
+}
+
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.hidden {
+  display: none;
+}
+
+#loading-div.hidden {
+  display: none;
 }

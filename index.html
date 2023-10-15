@@ -13,19 +13,22 @@
     <button id="search-btn">Search</button>
   </form>
   <p id="result-message">Enter your city, state/region, or postal code above to display the current weather!</p>
+  <div id="loading-div" class="hidden">
+    <div class="loader"></div>
+  </div>
   <div id="result-box" class="hidden">
     <h2></h2>
     <div id="conditions-container">
       <div>
-        <p id="localtime-p"></p>
+        <p id="localtime-p"><span class="bold">Local time:</span> <span id="localtime-span"></span></p>
         <div id="temp-div">
-          <p id="temp-p"></p>
+          <p><span class="bold">Temperature:</span> <span id="temp-span"></span></p>
           <select name="temp-unit" id="temp-unit">
             <option value="celsius">°C</option>
             <option value="fahrenheit">°F</option>
           </select>
         </div>
-        <p id="condition-p"></p>
+        <p><span class="bold">Conditions:</span> <span id="condition-span"></span></p>
       </div>
       <img id="condition-img" src="">
     </div>

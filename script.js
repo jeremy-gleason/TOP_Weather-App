@@ -1,13 +1,15 @@
 const searchBtn = document.getElementById('search-btn');
 const searchBox = document.getElementById('search-box');
 
+const loadingDiv = document.getElementById('loading-div');
+
 const resultBox = document.getElementById('result-box');
 const resultMessage = document.getElementById('result-message');
 const locationH2 = document.querySelector('#result-box h2');
-const timePara = document.getElementById('localtime-p');
-const tempPara = document.getElementById('temp-p');
+const timeSpan = document.getElementById('localtime-span');
+const tempSpan = document.getElementById('temp-span');
 const tempSelect = document.getElementById('temp-unit');
-const conditionPara = document.getElementById('condition-p');
+const conditionSpan = document.getElementById('condition-span');
 const conditionImg = document.getElementById('condition-img');
 
 let temp_celsius, temp_fahrenheit;
@@ -52,9 +54,9 @@ const formatDate = (dateString) => {
 const displayWeather = (weather_obj) => {
   console.log('Region: ', weather_obj.region);
   locationH2.textContent = `${weather_obj.city}${weather_obj.region ? ", " + weather_obj.region : ""}, ${weather_obj.country}`;
-  timePara.textContent = `Local time: ${formatDate(weather_obj.localtime)}`;
-  tempPara.textContent = `Temperature: ${tempSelect.value === 'celsius' ? weather_obj.temp_c : weather_obj.temp_f}`;
-  conditionPara.textContent = `Conditions: ${weather_obj.condition}`;
+  timeSpan.textContent = formatDate(weather_obj.localtime);
+  tempSpan.textContent = tempSelect.value === 'celsius' ? weather_obj.temp_c : weather_obj.temp_f;
+  conditionSpan.textContent = weather_obj.condition;
   conditionImg.src = `https:${weather_obj.condition_icon}`;
 }
 
@@ -64,8 +66,11 @@ searchBtn.addEventListener('click', async (e) => {
     console.log("Missing value");
   } else {
     const searchTerm = searchBox.value;
-    // searchBox.value = "";
+    resultBox.classList.add('hidden');
+    loadingDiv.classList.remove('hidden');
+    resultMessage.textContent = `Searching for "${searchTerm}...`;
     const weather_obj = await getWeather(searchTerm);
+    loadingDiv.classList.add('hidden');
     if (!weather_obj) {
       resultMessage.textContent = `No results found for "${searchTerm}".`;
       resultBox.classList.add('hidden');
@@ -82,9 +87,9 @@ searchBtn.addEventListener('click', async (e) => {
 
 tempSelect.addEventListener('change', (e) => {
   if (e.target.value === 'celsius')
-    tempPara.textContent = `Temperature: ${temp_celsius}`;
+    tempSpan.textContent = temp_celsius;
   else
-    tempPara.textContent = `Temperature: ${temp_fahrenheit}`;
+    tempSpan.textContent = temp_fahrenheit;
   console.log(e.target);
   console.log(e.target.value);
 });
